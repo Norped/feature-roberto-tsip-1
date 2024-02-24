@@ -26,4 +26,29 @@ public class UrlServiceImpl implements UrlService{
 		return urlRepository.findAll();
 	}
 
+	@Override
+	public UrlEntity save(UrlEntity urlEntity) {
+		return urlRepository.save(urlEntity);
+	}
+
+	@Override
+	public UrlEntity update(UrlEntity urlEntity) {
+		return urlRepository.save(urlEntity);
+	}
+
+	@Override
+	public String deleteById(Integer id) {
+		try {
+			urlRepository.deleteById(id);
+			return "Resource with ID " + id + " deleted successfully";
+		}catch(Exception e) {
+			return e.getLocalizedMessage();
+		}
+	}
+
+
+
+
+
+
 }

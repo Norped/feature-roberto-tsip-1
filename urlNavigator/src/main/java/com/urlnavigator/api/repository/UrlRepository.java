@@ -9,4 +9,5 @@ import com.urlnavigator.api.entity.UrlEntity;
 public interface UrlRepository extends CrudRepository<UrlEntity, Integer>{
 
 	UrlEntity findByUrl(String url);
+	
 }
