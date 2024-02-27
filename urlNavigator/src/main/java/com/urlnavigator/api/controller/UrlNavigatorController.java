@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.urlnavigator.api.common.Constants;
 import com.urlnavigator.api.entity.UrlEntity;
 import com.urlnavigator.api.service.UrlServiceImpl;
 
@@ -23,15 +24,17 @@ public class UrlNavigatorController {
 
 	
 	  private final UrlServiceImpl urlServiceImpl;
+	  private final Constants constants;
 
 	  @Autowired
-	  public UrlNavigatorController(UrlServiceImpl urlServiceImpl) {
+	  public UrlNavigatorController(UrlServiceImpl urlServiceImpl, Constants constants) {
 	      this.urlServiceImpl = urlServiceImpl;
+	      this.constants = constants;
 	  }
 	
 	@GetMapping(value = "/test")
 	private String test(){
-		return "Norped, Testing is done successfully!";
+		return constants.TEST;
 	}
 	
 	@GetMapping(value = "/findUrl/{urlName}")
@@ -65,7 +68,7 @@ public class UrlNavigatorController {
             String result = urlServiceImpl.deleteById(urlId);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (NumberFormatException e) {
-            return new ResponseEntity<>("Invalid ID format", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(this.constants.INVALID_ID_FORMAT, HttpStatus.BAD_REQUEST);
         }
 	}
 }

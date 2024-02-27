@@ -3,6 +3,7 @@ package com.urlnavigator.api.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.urlnavigator.api.common.Constants;
 import com.urlnavigator.api.entity.UrlEntity;
 import com.urlnavigator.api.repository.UrlRepository;
 
@@ -10,10 +11,12 @@ import com.urlnavigator.api.repository.UrlRepository;
 public class UrlServiceImpl implements UrlService{
 	
 	private final UrlRepository urlRepository;
+	private final Constants constants;
 	
 	 @Autowired
-	    public UrlServiceImpl(UrlRepository urlRepository) {
+	    public UrlServiceImpl(UrlRepository urlRepository, Constants constants) {
 	        this.urlRepository = urlRepository;
+	        this.constants = constants;
 	    }
 
 	 @Override
@@ -40,15 +43,10 @@ public class UrlServiceImpl implements UrlService{
 	public String deleteById(Integer id) {
 		try {
 			urlRepository.deleteById(id);
-			return "Resource with ID " + id + " deleted successfully";
+			return this.constants.DELETE_URL;
 		}catch(Exception e) {
 			return e.getLocalizedMessage();
 		}
 	}
-
-
-
-
-
 
 }
