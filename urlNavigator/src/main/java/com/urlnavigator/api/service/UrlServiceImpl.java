@@ -1,10 +1,15 @@
 package com.urlnavigator.api.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.urlnavigator.api.common.Constants;
 import com.urlnavigator.api.entity.UrlEntity;
+import com.urlnavigator.api.exception.ApiError;
+import com.urlnavigator.api.exception.ApiErrorMessages;
 import com.urlnavigator.api.repository.UrlRepository;
 
 @Service
@@ -45,7 +50,8 @@ public class UrlServiceImpl implements UrlService{
 			urlRepository.deleteById(id);
 			return this.constants.DELETE_URL;
 		}catch(Exception e) {
-			return e.getLocalizedMessage();
+			//return e.getLocalizedMessage();
+			return  id + " "+ ApiErrorMessages.URL_INVALID_DELETE;
 		}
 	}
 

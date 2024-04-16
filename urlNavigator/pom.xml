@@ -14,7 +14,7 @@
 	<name>urlNavigator</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>14</java.version>
 	</properties>
 	<dependencies>
 		
@@ -43,6 +43,13 @@
 		</dependency>
 		
 		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+		    <!-- Use the latest version -->
+		</dependency>
+
+		
+		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-tx</artifactId>
 		</dependency>
@@ -52,8 +59,13 @@
 	        <artifactId>mysql-connector-java</artifactId>
 	        <version>8.0.23</version> <!-- Use the latest version available -->
 	    </dependency>
-		
-		
+	    
+	    <!-- Spring Boot Starter AMQP -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-amqp</artifactId>
+	    </dependency>
+	    
 		
 	</dependencies>
 
